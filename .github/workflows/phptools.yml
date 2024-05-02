@@ -22,7 +22,7 @@ jobs:
           php-version: '7.4'
 
       - name: Install Composer dependencies
-        run: composer install --no-progress --no-suggest --no-interaction
+        run: composer install 
 
       - name: PHP lint
         run: find . -name '*.php' -exec php -l {} \;
