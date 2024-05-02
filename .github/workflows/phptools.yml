@@ -37,7 +37,7 @@ jobs:
        # run: vendor/bin/phpcbf --standard=PSR12 .
 
       - name: PHP Mess Detector (PHPMD)
-        run: vendor/bin/phpmd . text 
+        run: vendor/bin/phpmd . text cleancode
 
       #- name: PHP CodeSniffer (PHP CS)
        # run: vendor/bin/phpcs --standard=PSR12 .
