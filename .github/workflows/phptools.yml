@@ -19,7 +19,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '^5.0'
 
       - name: Install Composer dependencies
         run: composer install
@@ -28,7 +28,7 @@ jobs:
         run: composer require --dev "squizlabs/php_codesniffer:^3.6"
 
       - name: Update PHPMD
-        run: composer require --dev "phpmd/phpmd:^2.10" "pdepend/pdepend:^3.0"
+        run: composer require --dev "phpmd/phpmd:^2.0" "pdepend/pdepend:^2.0"
 
       - name: PHP lint
         run: find . -name '*.php' -not -path "./vendor/*" -exec php -l {} \;
