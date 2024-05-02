@@ -27,6 +27,9 @@ jobs:
       - name: updating cbf
         run: composer update squizlabs/php_codesniffer
 
+      - name: updating phpmd
+        run: composer update phpmd/phpmd pdepend/pdepend
+
       #- name: PHP lint
        # run: find . -name '*.php' -exec php -l {} \;
 
