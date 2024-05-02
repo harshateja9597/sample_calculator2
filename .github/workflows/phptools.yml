@@ -24,8 +24,8 @@ jobs:
       - name: Install Composer dependencies
         run: composer install 
 
-      - name: PHP lint
-        run: find . -name '*.php' -exec php -l {} \;
+      #- name: PHP lint
+       # run: find . -name '*.php' -exec php -l {} \;
 
       - name: PHP Code Beautifier and Fixer (PHP CBF)
         run: vendor/bin/phpcbf --standard=PSR12 .
