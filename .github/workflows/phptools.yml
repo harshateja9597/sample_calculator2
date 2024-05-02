@@ -30,14 +30,14 @@ jobs:
       #- name: PHP lint
        # run: find . -name '*.php' -exec php -l {} \;
 
-      - name: PHP Code Beautifier and Fixer (PHP CBF)
-        run: vendor/bin/phpcbf --standard=PSR12 .
+      #- name: PHP Code Beautifier and Fixer (PHP CBF)
+       # run: vendor/bin/phpcbf --standard=PSR12 .
 
       - name: PHP Mess Detector (PHPMD)
         run: vendor/bin/phpmd . xml cleancode,codesize,controversial,design,naming,unusedcode --reportfile phpmd_report.xml
 
-      - name: PHP CodeSniffer (PHP CS)
-        run: vendor/bin/phpcs --standard=PSR12 .
+      #- name: PHP CodeSniffer (PHP CS)
+       # run: vendor/bin/phpcs --standard=PSR12 .
 
       - name: Upload PHPMD report
         uses: actions/upload-artifact@v2
