@@ -22,7 +22,10 @@ jobs:
           php-version: '8.0'
 
       - name: Install Composer dependencies
-        run: composer install 
+        run: composer install
+
+      - name: updating cbf
+        run: composer update squizlabs/php_codesniffer
 
       #- name: PHP lint
        # run: find . -name '*.php' -exec php -l {} \;
