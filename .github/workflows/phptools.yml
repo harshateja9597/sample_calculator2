@@ -1,0 +1,43 @@
+name: PHP Tools
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tools:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --no-suggest --no-interaction
+
+      - name: PHP lint
+        run: find . -name '*.php' -exec php -l {} \;
+
+      - name: PHP Code Beautifier and Fixer (PHP CBF)
+        run: vendor/bin/phpcbf --standard=PSR12 .
+
+      - name: PHP Mess Detector (PHPMD)
+        run: vendor/bin/phpmd . xml cleancode,codesize,controversial,design,naming,unusedcode --reportfile phpmd_report.xml
+
+      - name: PHP CodeSniffer (PHP CS)
+        run: vendor/bin/phpcs --standard=PSR12 .
+
+      - name: Upload PHPMD report
+        uses: actions/upload-artifact@v2
+        with:
+          name: phpmd-report
+          path: phpmd_report.xml
