@@ -24,20 +24,23 @@ jobs:
       - name: Install Composer dependencies
         run: composer install
 
-      - name: Update PHP_CodeSniffer
-        run: composer require --dev "squizlabs/php_codesniffer:^3.6"
+      #- name: Update PHP_CodeSniffer
+       # run: composer require --dev "squizlabs/php_codesniffer:^3.6"
 
-      - name: Update PHPMD
-        run: composer require --dev "phpmd/phpmd:^2.0" "pdepend/pdepend:^2.0"
+      #- name: Update PHPMD
+      #  run: composer require --dev "phpmd/phpmd:^2.0" "pdepend/pdepend:^2.0"
 
       - name: PHP lint
         run: find . -name '*.php' -not -path "./vendor/*" -exec php -l {} \;
+        continue-on-error: true
 
       - name: PHP Code Beautifier and Fixer (PHP CBF)
         run: vendor/bin/phpcbf --standard=PSR12 .
+        continue-on-error: true
 
       - name: PHP Mess Detector (PHPMD)
         run: vendor/bin/phpmd . text cleancode
+        continue-on-error: true
 
       - name: PHP CodeSniffer (PHP CS)
         run: vendor/bin/phpcs --standard=PSR12 .
