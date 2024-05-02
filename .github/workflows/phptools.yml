@@ -24,26 +24,20 @@ jobs:
       - name: Install Composer dependencies
         run: composer install
 
-      - name: updating cbf
-        run: composer update squizlabs/php_codesniffer
+      - name: Update PHP_CodeSniffer
+        run: composer require --dev "squizlabs/php_codesniffer:^3.6"
 
-      - name: updating phpmd
-        run: composer update phpmd/phpmd pdepend/pdepend
+      - name: Update PHPMD
+        run: composer require --dev "phpmd/phpmd:^2.10" "pdepend/pdepend:^3.0"
 
-      #- name: PHP lint
-       # run: find . -name '*.php' -exec php -l {} \;
+      - name: PHP lint
+        run: find . -name '*.php' -not -path "./vendor/*" -exec php -l {} \;
 
-      #- name: PHP Code Beautifier and Fixer (PHP CBF)
-       # run: vendor/bin/phpcbf --standard=PSR12 .
+      - name: PHP Code Beautifier and Fixer (PHP CBF)
+        run: vendor/bin/phpcbf --standard=PSR12 .
 
       - name: PHP Mess Detector (PHPMD)
         run: vendor/bin/phpmd . text cleancode
 
-      #- name: PHP CodeSniffer (PHP CS)
-       # run: vendor/bin/phpcs --standard=PSR12 .
-
-      - name: Upload PHPMD report
-        uses: actions/upload-artifact@v2
-        #with:
-         # name: phpmd-report
-          # path: phpmd_report.xml
+      - name: PHP CodeSniffer (PHP CS)
+        run: vendor/bin/phpcs --standard=PSR12 .
