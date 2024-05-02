@@ -19,7 +19,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '^5.0'
+          php-version: '5.0'
 
       - name: Install Composer dependencies
         run: composer install
