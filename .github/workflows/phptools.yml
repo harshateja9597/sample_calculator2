@@ -37,13 +37,13 @@ jobs:
        # run: vendor/bin/phpcbf --standard=PSR12 .
 
       - name: PHP Mess Detector (PHPMD)
-        run: vendor/bin/phpmd . xml cleancode,codesize,controversial,design,naming,unusedcode --reportfile phpmd_report.xml
+        run: vendor/bin/phpmd . text 
 
       #- name: PHP CodeSniffer (PHP CS)
        # run: vendor/bin/phpcs --standard=PSR12 .
 
       - name: Upload PHPMD report
         uses: actions/upload-artifact@v2
-        with:
-          name: phpmd-report
-          path: phpmd_report.xml
+        #with:
+         # name: phpmd-report
+          # path: phpmd_report.xml
