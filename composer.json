@@ -3,6 +3,6 @@
         "phpunit/phpunit": "^9.5",
         "phpmd/phpmd": "1.x",
         "squizlabs/php_codesniffer": "^3.6",
-        "pdepend/pdepend": "^2.8"
+        "pdepend/pdepend": "^2.0"
     }
 }
