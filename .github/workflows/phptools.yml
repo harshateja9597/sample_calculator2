@@ -32,8 +32,9 @@ jobs:
 
       - name: updating phpmd
         run: composer update phpmd/phpmd pdepend/pdepend
-
-      
+        
+      - name: updating cs
+        run: composer require --dev squizlabs/php_codesniffer:"^3.6"
 
       - name: PHP lint
         run: find . -name '*.php' -exec php -l {} \;
