@@ -30,6 +30,9 @@ jobs:
       - name: updating phpmd
         run: composer update phpmd/phpmd pdepend/pdepend
 
+      - name: updating composer
+        run: composer update
+
       - name: PHP lint
         run: find . -name '*.php' -exec php -l {} \;
 
