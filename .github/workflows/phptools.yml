@@ -19,7 +19,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.2'
 
       - name: Install Composer dependencies
         run: composer install
@@ -37,15 +37,16 @@ jobs:
         run: composer require --dev squizlabs/php_codesniffer:"^3.6"
 
       - name: PHP lint
-        run: find . -name '*.php' -exec php -l {} \;
+        run: php-l .
 
       - name: PHP Code Beautifier and Fixer (PHP CBF)
-        run: vendor/bin/phpcbf --standard=PSR12 .
+        run: phpcbf --standard=PSR12 .
+        
+      - name: PHP CodeSniffer (PHP CS)
+        run: phpcs --standard=PSR12 .
 
       - name: PHP Mess Detector (PHPMD)
-        run: vendor/bin/phpmd . text cleancode
+        run: phpmd . text cleancode
 
-      - name: PHP CodeSniffer (PHP CS)
-        run: vendor/bin/phpcs --standard=PSR12 .
 
      
