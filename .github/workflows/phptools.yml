@@ -24,8 +24,8 @@ jobs:
       - name: Install Composer dependencies
         run: composer install
 
-      #- name: updating composer
-        #run: composer update
+      - name: updating composer
+        run: composer update
 
       #- name: updating phpmd
        # run: composer update phpmd/phpmd pdepend/pdepend
