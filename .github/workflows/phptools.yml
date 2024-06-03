@@ -30,11 +30,11 @@ jobs:
       #- name: updating phpmd
        # run: composer update phpmd/phpmd pdepend/pdepend
         
-      #- name: Install PHP_CodeSniffer
-        #run: composer global require "squizlabs/php_codesniffer=*"
+      - name: Install PHP_CodeSniffer
+        run: composer global require "squizlabs/php_codesniffer=*"
 
-      #- name: Add Composer Bin to PATH
-       # run: echo "$HOME/.composer/vendor/bin" >> $GITHUB_PATH
+      - name: Add Composer Bin to PATH
+        run: echo "$HOME/.composer/vendor/bin" >> $GITHUB_PATH
 
       - name: PHP lint
         run: php -l *.php
