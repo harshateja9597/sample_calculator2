@@ -37,7 +37,7 @@ jobs:
         run: composer require --dev squizlabs/php_codesniffer:"^3.6"
 
       - name: PHP lint
-        run: php-l .
+        run: php -l .
 
       - name: PHP Code Beautifier and Fixer (PHP CBF)
         run: phpcbf --standard=PSR12 .
