@@ -40,10 +40,12 @@ jobs:
         run: php -l *.php
 
       - name: PHP Code Beautifier and Fixer (PHP CBF)
-        run: phpcbf --standard=PSR12 *.php || true
+        run: phpcbf --standard=PSR12 *.php
+        continue-on-error: true 
         
       - name: PHP CodeSniffer (PHP CS)
-        run: phpcs --standard=PSR12 *.php || true
+        run: phpcs --standard=PSR12 *.php
+        continue-on-error: true
 
       - name: PHP Mess Detector (PHPMD)
         run: phpmd *.php text cleancode
