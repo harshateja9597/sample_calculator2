@@ -27,23 +27,23 @@ jobs:
       - name: updating composer
         run: composer update
 
-      - name: updating cbf
-        run: composer update squizlabs/php_codesniffer
-
       - name: updating phpmd
         run: composer update phpmd/phpmd pdepend/pdepend
         
-      - name: updating cs
-        run: composer require --dev squizlabs/php_codesniffer:"^3.6"
+      - name: Install PHP_CodeSniffer
+        run: composer global require "squizlabs/php_codesniffer=*"
+
+      - name: Add Composer Bin to PATH
+        run: echo "$HOME/.composer/vendor/bin" >> $GITHUB_PATH
 
       - name: PHP lint
         run: php -l .
 
       - name: PHP Code Beautifier and Fixer (PHP CBF)
-        run: phpcbf --standard=PSR2 .
+        run: phpcbf --standard=PSR12 .
         
       - name: PHP CodeSniffer (PHP CS)
-        run: phpcs --standard=PSR2 .
+        run: phpcs --standard=PSR12 .
 
       - name: PHP Mess Detector (PHPMD)
         run: phpmd . text cleancode
