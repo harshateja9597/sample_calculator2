@@ -36,6 +36,9 @@ jobs:
       - name: Add Composer Bin to PATH
         run: echo "$HOME/.composer/vendor/bin" >> $GITHUB_PATH
 
+      - name: install phpmd
+        run: composer global require "phpmd/phpmd" 
+
       - name: PHP lint
         run: php -l *.php
 
